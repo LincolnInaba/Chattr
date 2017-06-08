@@ -14,6 +14,10 @@ var username, userId, newUser, avatar = false, lastDate, messagesLoaded = false,
 var $$ = Dom7;
 
 
+///chats.remove();
+
+
+
 var chattr = new Framework7({
     modalTitle: 'Chattr Login',
     animateNavBackIcon: true,
@@ -40,8 +44,8 @@ users.on('child_added', function (snapshot) {
     var user = snapshot.val();
     if (user.name === username) return;
     chattr.addNotification({
-        title:'Hooray!',
-        subtitle: 'Say hello to new friend! "' + user.name + '" just joined chat!',
+        title:'Inaba',
+        subtitle:  user.name + ' conectado',
         media: '<img width="44" src="img/icon-144.png">'
     });
 });
@@ -169,7 +173,8 @@ $$('#sendPhoto').on('click', function () {
             time = formatTime(date);
             lastDate = date;
         }
-        chats.push({name: username, message: messageText, avatar: avatar, date: date});
+        chats.push({ name: username, message: messageText, avatar: avatar, date: date });
+
         myMessages.addMessage({
             text: messageText,
             type: 'sent',
