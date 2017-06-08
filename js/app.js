@@ -189,9 +189,8 @@ $$('#sendPhoto').on('click', function () {
 
 // Login
 function login() {
-    chattr.prompt('What is your name (or gravatar email)?', function (data) {
+    chattr.prompt('qual e seu nome?', function (data) {
         username = data || 'Anon';
-        chattr.alert('Ok, you are now logged in as ' + username + ' ;)');
         newUser = users.push({name: username});
         userId = newUser.name();
         if(validateEmail(username)) {
