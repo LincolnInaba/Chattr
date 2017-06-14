@@ -222,7 +222,7 @@ function login() {
 login();
 
 
-
+/*
 
     var player = document.getElementById('player');
     var snapshotCanvas = document.getElementById('snapshot');
@@ -246,3 +246,4 @@ login();
 
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(handleSuccess);
+*/
