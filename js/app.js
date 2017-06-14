@@ -205,8 +205,8 @@ function login() {
         chattr.prompt('qual e seu nome?', function (data) {
             localStorage.username = username = data || 'Anon';
 
-            //newUser = users.push({ name: username });
-            newUser = users.set({ name: username });
+            newUser = users.push({ name: username });
+            //newUser = users.set({ name: username });
             userId = newUser.name();
             if (validateEmail(username)) {
                 username = username.toLowerCase();
