@@ -128,6 +128,7 @@ function receiveMessage(snapshot) {
         time = formatTime(date);
         lastDate = date;
     }
+    notifyMe(stripMessage(message.message));
     myMessages.addMessage({
         text: stripMessage(message.message),
         type: 'received',
@@ -142,6 +143,32 @@ chats.on("child_added", function(snapshot) {
     receiveMessage(snapshot);
 });
 
+function notifyMe(s) {
+    // Let's check if the browser supports notifications
+    if (!("Notification" in window)) {
+        alert("This browser does not support system notifications");
+    }
+
+        // Let's check whether notification permissions have already been granted
+    else if (Notification.permission === "granted") {
+        // If it's okay let's create a notification
+        var notification = new Notification("Hi there!");
+        setTimeout(notification.close.bind(notification), 15000);
+    }
+
+        // Otherwise, we need to ask the user for permission
+    else if (Notification.permission !== 'denied') {
+        Notification.requestPermission(function (permission) {
+            // If the user accepts, let's create a notification
+            if (permission === "granted") {
+                var notification = new Notification("Hi there!");
+            }
+        });
+    }
+
+    // Finally, if the user has denied notifications and you 
+    //
+}
 
 // Send message
 $$('.messagebar a.link').on('click', function () {
@@ -221,6 +248,27 @@ function login() {
 }
 login();
 
+Notification.requestPermission().then(function (result) {
+    console.log(result);
+});
+
+
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+    console.log('Service Worker and Push is supported');
+
+    navigator.serviceWorker.register('sw.js')
+    .then(function (swReg) {
+        console.log('Service Worker is registered', swReg);
+
+        swRegistration = swReg;
+    })
+    .catch(function (error) {
+        console.error('Service Worker Error', error);
+    });
+} else {
+    console.warn('Push messaging is not supported');
+    pushButton.textContent = 'Push Not Supported';
+}
 
 /*
 
