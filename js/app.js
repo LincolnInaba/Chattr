@@ -152,7 +152,7 @@ function notifyMe(s) {
         // Let's check whether notification permissions have already been granted
     else if (Notification.permission === "granted") {
         // If it's okay let's create a notification
-        var notification = new Notification("Hi there!");
+        var notification = new Notification(s);
         setTimeout(notification.close.bind(notification), 15000);
     }
 
@@ -161,7 +161,7 @@ function notifyMe(s) {
         Notification.requestPermission(function (permission) {
             // If the user accepts, let's create a notification
             if (permission === "granted") {
-                var notification = new Notification("Hi there!");
+                var notification = new Notification(s);
             }
         });
     }
