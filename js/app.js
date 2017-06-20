@@ -248,10 +248,11 @@ function login() {
 }
 login();
 
+/*
 Notification.requestPermission().then(function (result) {
     console.log(result);
 });
-
+*/
 
 if ('serviceWorker' in navigator && 'PushManager' in window) {
     console.log('Service Worker and Push is supported');
