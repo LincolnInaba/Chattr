@@ -128,7 +128,7 @@ function receiveMessage(snapshot) {
         time = formatTime(date);
         lastDate = date;
     }
-    notifyMe(stripMessage(message.message));
+//    notifyMe(stripMessage(message.message));
     myMessages.addMessage({
         text: stripMessage(message.message),
         type: 'received',
